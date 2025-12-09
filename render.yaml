@@ -2,11 +2,13 @@ services:
   - type: web
     name: content-summarizer
     env: python
+    region: oregon
+    plan: free
     buildCommand: pip install --upgrade pip && pip install -r requirements-deploy.txt
-    startCommand: python -m gunicorn app:app --bind 0.0.0.0:$PORT
+    startCommand: gunicorn app:app
     envVars:
       - key: PYTHON_VERSION
-        value: 3.11.0
+        value: 3.11
       - key: GEMINI_API_KEY
         sync: false
       - key: GEMINI_MODEL_ID
