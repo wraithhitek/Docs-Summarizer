@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: content-summarizer
+    env: python
+    buildCommand: pip install -r requirements-deploy.txt
+    startCommand: gunicorn app:app
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: GEMINI_MODEL_ID
+        value: gemini-flash-latest
+      - key: MAX_TOKENS
+        value: 1024
+      - key: TEMPERATURE
+        value: 0.5
