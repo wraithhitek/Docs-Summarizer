@@ -238,11 +238,3 @@ Google Gemini offers:
 - **Paid tier**: Higher rate limits and priority access
 
 Check current pricing at: https://ai.google.dev/pricing
-
-## License
-
-[Your License Here]
-
-## Contributing
-
-[Your Contributing Guidelines Here]
