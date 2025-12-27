@@ -90,7 +90,7 @@ class Config:
                 "Get your API key from: https://makersuite.google.com/app/apikey"
             )
         
-        model_id = os.getenv('GEMINI_MODEL_ID', 'gemini-2.0-flash-exp')
+        model_id = os.getenv('GEMINI_MODEL_ID', 'gemini-3-flash-preview')
         
         # Load max_tokens with default
         max_tokens_str = os.getenv('MAX_TOKENS', '1024')
