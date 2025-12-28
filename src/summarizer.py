@@ -95,10 +95,8 @@ class GeminiSummarizer:
         
         try:
             # Initialize the Gemini client with API key
-            # Use v1 API version for stable model access
             self.client = genai.Client(
-                api_key=config.api_key,
-                http_options=types.HttpOptions(api_version='v1')
+                api_key=config.api_key
             )
             
         except Exception as e:
