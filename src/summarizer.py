@@ -95,7 +95,11 @@ class GeminiSummarizer:
         
         try:
             # Initialize the Gemini client with API key
-            self.client = genai.Client(api_key=config.api_key)
+            # Use v1 API version for stable model access
+            self.client = genai.Client(
+                api_key=config.api_key,
+                http_options=types.HttpOptions(api_version='v1')
+            )
             
         except Exception as e:
             error_msg = str(e).lower()
@@ -187,7 +191,7 @@ class GeminiSummarizer:
             error_type = type(e).__name__
             
             # Handle specific Gemini API errors
-            if 'quota' in error_msg or 'resource_exhausted' in error_msg or '429' in error_msg or 'rate' in error_msg:
+            if 'quota' in error_msg or 'resource_exhausted' in error_msg or '429' in error_msg or 'rate limit' in error_msg:
                 raise RateLimitError(
                     f"Rate limit or quota exceeded: {str(e)}. "
                     "Please wait a few moments and try again, or check your API quota."
